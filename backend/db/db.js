@@ -91,6 +91,17 @@ const getUser = async (email) => {
   }
 };
 
+const Auth = async (data) => {
+  let sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+  try {
+    const [rows, fields] = await db.promise().query(sql, [data.email, data.password]);
+    return rows;
+  } catch (e) {
+    logger.error("Error Incorrect Details", e);
+    throw new Error("Error Incorrect Details");
+  }
+};
+
 // const getUserDetails = async (address) => {
 //   let sql = "SELECT * FROM transactions WHERE buyer_address = ?";
 //   try {

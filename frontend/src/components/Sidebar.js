@@ -45,6 +45,7 @@ import { Link } from "react-router-dom";
               <img
                 src={logo}
                 className=""
+                alt="Logo"
                 >
 
                 </img>
@@ -53,6 +54,7 @@ import { Link } from "react-router-dom";
                 <img
                 src={logoonly}
                 className=""
+                alt="Logo"
                 >
                 </img>
               )}
@@ -62,6 +64,7 @@ import { Link } from "react-router-dom";
                 src={expandarrow}
                 className={`cursor-pointer ${!open && "hidden"}`}
                 onClick={() => setOpen(!open)}
+                alt="expandarrow"
                 >
               </img>
             </div> 
@@ -80,6 +83,7 @@ import { Link } from "react-router-dom";
                   <img
                     src={menu.icon}
                     className={`${!open && "scale-250"}`}
+                    alt={menu?.name}
                   ></img>
                 </div>
                 <h2
@@ -106,7 +110,9 @@ import { Link } from "react-router-dom";
           <div className="py-2 px-5 flex flex-row absolute inset-x-0 bottom-12">
             <div className="mr-1">
               <img src={telephone}
-              className="">
+              className=""
+              alt=""
+              >
 
               </img>
             </div>

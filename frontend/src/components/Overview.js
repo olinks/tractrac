@@ -4,7 +4,7 @@ import { IconContext } from "react-icons/lib";
 
 import contrast from "../assets/contrast.png";
 import togglebutton from "../assets/togglebutton.png";
-import Header from "./H";
+import Header from "./Header";
 function Overview() {
   return (
     <motion.div className="">

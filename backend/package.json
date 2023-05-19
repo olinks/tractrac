@@ -22,7 +22,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "devStart": "nodemon index.js",
+    "dev": "nodemon index.js",
     "create:db": "cd db && node create_database.js",
     "create:table": "cd db && node create_table.js",
     "test": "echo \"Error: no test specified\" && exit 1"

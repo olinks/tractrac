@@ -11,16 +11,41 @@ app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+    res.send("Server Running")
+})
+
+// Login EndPoint
 app.post("/login",async (req,res) =>{
     try{
-        const result = await db.login(req.body);
+        const result = await db.getUser(req.body);
         res.json(result);
     }catch (e){
         res.status(500).json(e);
     }
 });
 
+app.get("/login/:email",async (req,res) =>{
+    try{
+        console.log(req.params.email);
+        const result = await db.getUser(req.params.email);
+        res.json(result);
+    }catch (e){
+        res.status(500).json(e);
+    }
+});
+// Get User Data EndPoint
 app.post("/getUserData", async (req, res) => {
+    try{
+        const result = await db.getUser(req.body);
+        res.json(result);
+    }catch(e){
+        res.status(500).json(e);
+    }
+});
+
+// Creating new User EndPoint
+app.post("/createUser", async (req, res) => {
     try{
         const result = await db.getUser(req.body);
         res.json(result);

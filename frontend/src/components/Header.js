@@ -19,7 +19,7 @@ function Header() {
                 placeholder="Search Pathology Results" />
             </div>
 <div className="p-2">
-    <img className="my-5 border border-[#C5C5C5] rounded-full" src={notification}></img>
+    <img className="my-5 border border-[#C5C5C5] rounded-full" src={notification} alt="notification"></img>
 </div>
 <div className="border-[1px] m-5">
     </div>
