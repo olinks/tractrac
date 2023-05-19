@@ -2,7 +2,7 @@ import "./App.css";
 import React, {useState} from "react"
 
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import Login from "./Pages/Login";
 
@@ -25,7 +25,7 @@ function App() {
 
 
 
-          
+
           {/* <Routes> */}
             {/* <Route path="/" exact element={<Login />} /> */}
             {/* <Route path="/dashboard" exact element={<Dashboard />} /> */}

@@ -10,7 +10,7 @@ function Dashboard() {
     <div className=" ">
       <div className="flex">
         <Sidebar />
-        <Overview />
+        <Overview data={userData} />
         {/* <AnimatedRoutes /> */}
       </div>
     </div>

@@ -8,15 +8,28 @@ function Login() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
-    const { setIsLoggedIn } = useContext(LoginContext);
-    function handleClick(){
-        axios.get("http://127.0.0.1:3001/login/EMAIL")
+    const { setIsLoggedIn, setUserData, isRegistered, setIsRegistered } = useContext(LoginContext);
+    function toggleForm(a){
+        setIsRegistered(a);
+    }
+    function handleLogin(){
+        axios.post(`http://127.0.0.1:3001/Auth`,{email: email, password: password})
         .then((res) => {
             console.log(res.data);
             setUserData(res.data);
+            setIsLoggedIn(true);
 
         })
-        // axios.post("https://localhost:3001/", {email: email, password: password})
+    }
+
+    function handleCreateAccount(){
+        axios.post(`http://127.0.0.1:3001/createUser`, {name:name, email:email, password: password})
+        .then((res) => {
+            console.log(res.data);
+            setUserData(res.data);
+            setIsRegistered(true);
+
+        })
     }
     return (
     <div className='bg-[#100DB1] py-12'>
@@ -49,7 +62,7 @@ function Login() {
                             placeholder='Name'
                             className='border w-full rounded-full h-[45px] p-2'
                             onChange={(e) => {
-                                setEmail(e.target.value);
+                                setName(e.target.value);
                             }}
                             />
                         </div>
@@ -97,13 +110,13 @@ function Login() {
                             type='submit'
                             name='submit'
                             className='flex mt-5 w-full justify-center py-3.5 bg-[#100DB1] text-sm font-semibold leading-6 text-white shadow-sm h-[55px] rounded-full'
-                            onClick={handleClick}
+                            onClick={isRegistered ? handleLogin : handleCreateAccount}
                             >
                                 {isRegistered ? "Login" : "Create Account" }
                             </button>
                         </div>
                         <div className='mt-5'>
-                            {isRegistered ? (<p className='text-sm flex justify-center'>Don’t have an account? <a href='/' className='text-[#100DB1] underline'>Create an account</a></p>) : (<p className='text-sm flex justify-center'>Already have an account? <a href='/' className='text-[#100DB1] underline'>Login</a></p>)}
+                            {isRegistered ? (<p className='text-sm flex justify-center'>Don’t have an account? <a  className='text-[#100DB1] underline' onClick={() => toggleForm(false)}>Create an account</a></p>) : (<p className='text-sm flex justify-center'>Already have an account? <a className='text-[#100DB1] underline' onClick={() => toggleForm(true)}>Login</a></p>)}
                         </div>
                     </form>
                 </div>

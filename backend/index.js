@@ -16,9 +16,9 @@ app.get("/", (req, res) => {
 })
 
 // Login EndPoint
-app.post("/login",async (req,res) =>{
+app.post("/Auth",async (req,res) =>{
     try{
-        const result = await db.getUser(req.body);
+        const result = await db.Auth(req.body);
         res.json(result);
     }catch (e){
         res.status(500).json(e);
@@ -34,6 +34,7 @@ app.get("/login/:email",async (req,res) =>{
         res.status(500).json(e);
     }
 });
+
 // Get User Data EndPoint
 app.post("/getUserData", async (req, res) => {
     try{
@@ -47,7 +48,7 @@ app.post("/getUserData", async (req, res) => {
 // Creating new User EndPoint
 app.post("/createUser", async (req, res) => {
     try{
-        const result = await db.getUser(req.body);
+        const result = await db.createUser(req.body);
         res.json(result);
     }catch(e){
         res.status(500).json(e);

@@ -5,7 +5,7 @@ import { IconContext } from "react-icons/lib";
 import contrast from "../assets/contrast.png";
 import togglebutton from "../assets/togglebutton.png";
 import Header from "./Header";
-function Overview() {
+function Overview({userdata}) {
   return (
     <motion.div className="">
       <IconContext.Provider value={{ color: "black", size: "25px" }}>
@@ -19,7 +19,7 @@ function Overview() {
           {/* Greeting Div */}
           <div className="flex justify-around">
             <div className="">
-              <h3>Welcome Vivian,</h3>
+              <h3>Welcome Vivian,{userdata.name}</h3>
               <p>How’re you feeling today?</p>
             </div>
             <div className="">

@@ -114,6 +114,7 @@ const Auth = async (data) => {
 // };
 
 module.exports = {
+  Auth,
   createUser,
   getUser,
   createDatabase,
