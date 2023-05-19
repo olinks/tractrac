@@ -1,17 +1,20 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import { LoginContext } from "../Contexts/LoginContext";
 import logoonly from "../assets/logoonly.png"
 import axios from "axios"
 
 function Login() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isRegistered, setIsRegistered] = useState(true);
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+
+    const { setIsLoggedIn } = useContext(LoginContext);
     function handleClick(){
         axios.get("http://127.0.0.1:3001/login/EMAIL")
         .then((res) => {
             console.log(res.data);
+            setUserData(res.data);
+
         })
         // axios.post("https://localhost:3001/", {email: email, password: password})
     }

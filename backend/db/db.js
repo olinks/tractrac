@@ -41,7 +41,7 @@ const createTable = async () => {
   //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   //     PRIMARY KEY (id)
   //   )`;
-  const sql = `CREATE TABLE IF NOT EXISTS 'trac.users' (
+  const sql = `CREATE TABLE IF NOT EXISTS 'users' (
     'id' INT NOT NULL AUTO_INCREMENT ,
      'email' VARCHAR(128) NOT NULL ,
      'name' VARCHAR(64) NOT NULL ,

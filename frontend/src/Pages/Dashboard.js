@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
+import { LoginContext } from "../Contexts/LoginContext";
 
-import AnimatedRoutes from "../components/AnimatedRoutes";
+// import AnimatedRoutes from "../components/AnimatedRoutes";
 import Sidebar from "../components/Sidebar";
+import Overview from "../components/Overview";
 function Dashboard() {
+  const {userData} = useContext(LoginContext);
   return (
     <div className=" ">
       <div className="flex">
         <Sidebar />
-        <AnimatedRoutes />
+        <Overview />
+        {/* <AnimatedRoutes /> */}
       </div>
     </div>
   );
