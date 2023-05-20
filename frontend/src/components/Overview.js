@@ -1,12 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
 import { motion } from "framer-motion";
 import { IconContext } from "react-icons/lib";
 
 import contrast from "../assets/contrast.png";
-import togglebutton from "../assets/togglebutton.png";
+import contrastdark from "../assets/contrastdark.png";
+import darkoff from "../assets/togglebutton.png";
+import darkon from "../assets/switch.png";
 import dash from "../assets/component.png";
+import darkdash from "../assets/darkcomponent.png";
 import Header from "./Header";
 function Overview({data}) {
+  const [darkMode, setDarkMode] = useState(false);
+  function toggleDarkMode(){
+    setDarkMode(!darkMode);
+  }
   return (
     <motion.div className="">
       <IconContext.Provider value={{ color: "black", size: "25px" }}>
@@ -16,36 +23,37 @@ function Overview({data}) {
             ORDERS
           </h4>
         </header> */}
-        <div className="container my-2 w-[100]">
+        <div className={`my-2 w-[100] relative ${darkMode && "bg-[#050517]"} `}>
           {/* Greeting Div */}
           <div className="flex justify-around">
-            <div className="">
+            <div className={`${darkMode && "text-[#ffff]"}`}>
               <h3>Welcome Vivian,</h3>
               <p>How’re you feeling today?</p>
             </div>
-            <div className="">
+            <div className="flex flex-row gap-4">
               <div>
                 <img
-                  src={contrast}
+                  src={darkMode ? contrastdark : contrast}
                   alt="contrast"
                 >
                 </img>
               </div>
-              <div>
+              <div className={`${darkMode && "text-[#ffff]"}`}>
                 <img
-                  src={togglebutton}
+                  src={darkMode ? darkon : darkoff}
                   alt="toggle Button"
+                  onClick={() => toggleDarkMode()}
                 >
                 </img>
               </div>
-              <div>
+              <div className={`${darkMode && "text-[#ffff]"}`}>
                 <p>Apply Dark Theme</p>
               </div>
             </div>
           </div>
           {/* Chart Section */}
-          <section>
-            <img src={dash} alt="dash"></img>
+          <section className="p-5">
+            <img src={darkMode ? darkdash : dash} alt="dash"></img>
             <div>
               {/* Left chart Section */}
               <div className="flex flex-col">

@@ -27,7 +27,7 @@ import { Link } from "react-router-dom";
       ];
       const [open, setOpen] = useState(true);
       return (
-        <section className="rounded-md m-2  ">
+        <section className="rounded-md m-2 static relative">
         <div
           className={`divide-y divide-gray-700 relative rounded-md bg-[#F7F7F7] min-h-screen px-5  ${
             open ? "w-60" : "w-16"
@@ -70,7 +70,7 @@ import { Link } from "react-router-dom";
             </div> 
           </div>
           {/* Menu items */}
-          <div className="mt-4 flex flex-col gap-4 relative">
+          <div className="mt-4 pt-5 flex flex-col gap-4 relative">
             {menus?.map((menu, i) => (
               <Link
                 to={menu?.link}

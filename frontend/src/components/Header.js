@@ -1,14 +1,14 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import notification from "../assets/notification.png"
 import { RiSearchLine } from "react-icons/ri"
 
 function Header({user}) {
-    let name ="";
+    const [name, setName] = useState(user.name);
     useEffect(() => {
         window.localStorage.setItem('name', user.name);
     },[user.name])
     useEffect(() => {
-        name = localStorage.getItem('name');
+        setName(localStorage.getItem('name'));
     },[name])
     return (
 <div className="my-2 w-[100%] rounded-[10px] bg-[#F7F7F7] flex flex-row ">
@@ -35,7 +35,7 @@ function Header({user}) {
 
         </div>
         <div className="ml-2 px-2">
-            <h3 className="font-bold">Akule Vivian - {name}</h3>
+            <h3 className="font-bold">{name}</h3>
             <h4 className="text-[#100DB1]">DOCTOR</h4>
         </div>
     </div>
