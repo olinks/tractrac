@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
     res.send("Server Running")
@@ -17,11 +17,13 @@ app.get("/", (req, res) => {
 
 // Login EndPoint
 app.post("/Auth",async (req,res) =>{
+    console.log("Auth");
     try{
         const result = await db.Auth(req.body);
+        console.log(result);
         res.json(result);
     }catch (e){
-        res.status(500).json(e);
+        // res.status(500).json(e);
     }
 });
 

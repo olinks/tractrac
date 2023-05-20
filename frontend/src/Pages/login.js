@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginContext } from "../Contexts/LoginContext";
 import logoonly from "../assets/logoonly.png"
 import axios from "axios"
@@ -7,22 +8,28 @@ function Login() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate()
 
-    const { setIsLoggedIn, setUserData, isRegistered, setIsRegistered } = useContext(LoginContext);
+    const { setIsLoggedIn, userData, setUserData, isRegistered, setIsRegistered } = useContext(LoginContext);
     function toggleForm(a){
         setIsRegistered(a);
     }
-    function handleLogin(){
-        axios.post(`http://127.0.0.1:3001/Auth`,{email: email, password: password})
+    function handleLogin(e){
+        e.preventDefault();  
+        console.log("Handle Login")
+        axios.post('http://127.0.0.1:3001/Auth',{email: email, password: password})
         .then((res) => {
-            console.log(res.data);
             setUserData(res.data);
+            console.log(userData);
+            console.log("User Data", res.data);
             setIsLoggedIn(true);
-
+            navigate("/Dashboard");
+            
         })
     }
 
-    function handleCreateAccount(){
+    function handleCreateAccount(e){
+        e.preventDefault();  
         axios.post(`http://127.0.0.1:3001/createUser`, {name:name, email:email, password: password})
         .then((res) => {
             console.log(res.data);
@@ -116,7 +123,7 @@ function Login() {
                             </button>
                         </div>
                         <div className='mt-5'>
-                            {isRegistered ? (<p className='text-sm flex justify-center'>Don’t have an account? <a  className='text-[#100DB1] underline' onClick={() => toggleForm(false)}>Create an account</a></p>) : (<p className='text-sm flex justify-center'>Already have an account? <a className='text-[#100DB1] underline' onClick={() => toggleForm(true)}>Login</a></p>)}
+                            {isRegistered ? (<p className='text-sm flex justify-center'>Don’t have an account? <a href="/"  className='text-[#100DB1] underline' onClick={() => toggleForm(false)}>Create an account</a></p>) : (<p className='text-sm flex justify-center'>Already have an account? <a href="/" className='text-[#100DB1] underline' onClick={() => toggleForm(true)}>Login</a></p>)}
                         </div>
                     </form>
                 </div>

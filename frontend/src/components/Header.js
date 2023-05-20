@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import notification from "../assets/notification.png"
 import { RiSearchLine } from "react-icons/ri"
 
-function Header() {
+function Header({user}) {
+    let name ="";
+    useEffect(() => {
+        window.localStorage.setItem('name', user.name);
+    },[user.name])
+    useEffect(() => {
+        name = localStorage.getItem('name');
+    },[name])
     return (
 <div className="my-2 w-[100%] rounded-[10px] bg-[#F7F7F7] flex flex-row ">
 {/* <div className="py-5 m-5 flex w-[70%] justify-start rounded-[8px] items-center h-[39px] border-[1px] border-[#C5C5C5]">
@@ -11,7 +18,7 @@ function Header() {
     <input type="text" className="bg-transparent py-[10px] outline-none text-[#3C3E4D] w-[100%] placeholder:text-[#3C3E4D] placeholder:text-[12px]" placeholder="Search Pathology Results">
 
 </div> */}
-            <div className='py-5 m-5 flex w-[70%] justify-start rounded-[8px] items-center h-[39px] border-[1px] border-[#C5C5C5]'>
+            <div className='py-5 m-5 flex w-[90%] justify-start rounded-[8px] items-center h-[39px] border-[1px] border-[#C5C5C5]'>
               <RiSearchLine className='' />
               <input
                 type='text'
@@ -28,7 +35,7 @@ function Header() {
 
         </div>
         <div className="ml-2 px-2">
-            <h3 className="font-bold">Akule Vivian</h3>
+            <h3 className="font-bold">Akule Vivian - {name}</h3>
             <h4 className="text-[#100DB1]">DOCTOR</h4>
         </div>
     </div>

@@ -4,12 +4,13 @@ import { IconContext } from "react-icons/lib";
 
 import contrast from "../assets/contrast.png";
 import togglebutton from "../assets/togglebutton.png";
+import dash from "../assets/component.png";
 import Header from "./Header";
-function Overview({userdata}) {
+function Overview({data}) {
   return (
     <motion.div className="">
       <IconContext.Provider value={{ color: "black", size: "25px" }}>
-        <Header></Header>
+        <Header user={data}></Header>
         {/* <header className="h-[55px] sm:h-[70px] w-[100%]  sm:w-[100%] bg-[#f7f7f7] flex justify-center items-center px-2 sm:px-3 md:px-12">
           <h4 className="font-bold text-[#62AB4D] text-md sm:text-lg">
             ORDERS
@@ -19,7 +20,7 @@ function Overview({userdata}) {
           {/* Greeting Div */}
           <div className="flex justify-around">
             <div className="">
-              <h3>Welcome Vivian,{userdata.name}</h3>
+              <h3>Welcome Vivian,</h3>
               <p>How’re you feeling today?</p>
             </div>
             <div className="">
@@ -44,6 +45,7 @@ function Overview({userdata}) {
           </div>
           {/* Chart Section */}
           <section>
+            <img src={dash} alt="dash"></img>
             <div>
               {/* Left chart Section */}
               <div className="flex flex-col">
